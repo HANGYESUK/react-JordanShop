@@ -16,7 +16,7 @@ function App() {
       </Navbar>
       <div className='jumboTron'>
         <h1>20% Season of!</h1>
-        <p>어쩌구 저쩌구 아싸라비야</p>
+        <p>아이즈원 !!</p>
         <Button variant="primary">Primary</Button>
       </div>
 
