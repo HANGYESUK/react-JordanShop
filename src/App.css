@@ -3,8 +3,13 @@
 }
 
 .jumboTron {
-  color: red;
-  background-image: url('https://cdn.topstarnews.net/news/photo/201903/605056_290449_4117.jpg');
+  color: black;
+  background-image: url('https://blog.kakaocdn.net/dn/cZue2T/btqLSN87iqP/J3zG7BWqYoUqNKdv5geZaK/img.jpg');
   background-size: cover;
-  padding: 150px
+  padding: 150px;
+}
+
+img {
+  width: 300px;
+  height: 300px;
 }
