@@ -1,0 +1,31 @@
+.low {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.colum {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.jumboTron {
+    color: black;
+    background-image: url('https://blog.kakaocdn.net/dn/cZue2T/btqLSN87iqP/J3zG7BWqYoUqNKdv5geZaK/img.jpg');
+    background-size: cover;
+    padding: 150px;
+}
+  
+.jumboTronBack {
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 7.5px );
+    -webkit-backdrop-filter: blur( 7.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    padding: 50px;
+    text-align: center;
+}

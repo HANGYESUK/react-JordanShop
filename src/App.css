@@ -2,13 +2,6 @@
   text-align: center;
 }
 
-.jumboTron {
-  color: black;
-  background-image: url('https://blog.kakaocdn.net/dn/cZue2T/btqLSN87iqP/J3zG7BWqYoUqNKdv5geZaK/img.jpg');
-  background-size: cover;
-  padding: 150px;
-}
-
 img {
   width: 300px;
   height: 300px;
