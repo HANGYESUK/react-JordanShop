@@ -25,14 +25,31 @@ function Home(ShoesData) {
         </div>
 
         <br/>
+
+
         <Button variant="danger" onClick={()=>{
+                    let shoesCopy = [...shoesData]
+                    shoesCopy.sort(function (a,b) {
+                        return a.stock - b.stock
+                    })
+                    console.log(shoesCopy)
+                    setShoesData(shoesCopy)
+                }}>인기순 정렬
+        </Button>&nbsp;&nbsp;&nbsp;
+
+
+
+
+        <Button variant="success" onClick={()=>{
                     let shoesCopy = [...shoesData]
                     shoesCopy.sort(function (a,b) {
                         return a.price - b.price
                     })
                     console.log(shoesCopy)
                     setShoesData(shoesCopy)
-                }}>가격별 정렬</Button>&nbsp;
+                }}>가격순 정렬
+        </Button>&nbsp;&nbsp;&nbsp;
+
 
         <Button variant="primary" onClick={()=>{
 
@@ -70,7 +87,10 @@ function Home(ShoesData) {
                 })
                 .catch((err)=>{console.log(err)})
 
-        }}>데이터추가</Button>
+                }}>데이터추가
+        </Button>
+
+
 
         <div className='container'>
             <div className='row'>
