@@ -1,0 +1,46 @@
+$popColor : #8e44ad;
+
+$stockColor : #ff3d3d;
+
+
+body {
+    margin: 0;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.main {
+    color: $stockColor;
+}
+
+@mixin badge() {
+    background: #eeeeee;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    margin-top: 30px;
+    max-width: 500px;
+}
+
+.badge-stock {
+    @include badge();
+    background: $stockColor;
+}
+
+.badge-pop {
+    @extend .badge-stock;
+    background: $popColor;
+    color: white;
+}
+
+.alert p {
+    margin-bottom: 0;
+}
+
+.display-none {
+    display: none;
+}

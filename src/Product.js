@@ -11,7 +11,7 @@ function Product(props) {
     }}>
         <img src={props.props.src}></img>
         <h4>상품명 : {props.props.name}</h4>
-        <p>상품설명 & 가격 :  {props.props.price}</p>
+        <p>상품설명 & 가격 :  {props.props.price}원</p>
     </div>
   )
 }
