@@ -8,7 +8,11 @@ import axios from 'axios';
 
 function Home(ShoesData) {
 
-    let [shoesData, setShoesData] = useState(ShoesData.ShoesData)
+    let shoesData = ShoesData.ShoesData
+
+    let setShoesData = ShoesData.setShoesData
+
+    console.log(shoesData)
 
     let [show, setShow] = useState(true)
 
@@ -104,6 +108,19 @@ function Home(ShoesData) {
                 })
             }
             </div>
+
+            <Button className='moreBtn' variant="primary" onClick={()=>{
+                    axios.get('https://codingapple1.github.io/shop/data2.json')
+                    .then((result)=>{
+                        console.log("성공")                        
+                        setShoesData([...shoesData, ...result.data])   
+                        console.log(shoesData)                  
+                    })
+                    .catch(()=>{
+                        console.log("실패")
+                    })
+                }}>상품 더보기
+            </Button>
         </div>
     </>
   )

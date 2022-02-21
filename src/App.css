@@ -6,3 +6,8 @@ img {
   width: 300px;
   height: 250px;
 }
+
+.moreBtn {
+  margin-bottom: 30px;
+  padding: 13px;
+}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom' //리액트 V6버전 부터 history 대신 navi로 제공
 import styled from 'styled-components'
 import './Detail.scss'
@@ -24,6 +24,8 @@ let Title = styled.h2`
 
 function Detail(props) {
 
+    let [alert, setAlert] = useState(true);
+
 
     // Hook - 컴포넌트 라이프사이클에 후크를 건다
     useEffect(()=>{
@@ -33,16 +35,22 @@ function Detail(props) {
         }, 2000)
 
         // 컴포넌트가 사라질때 실행하는 함수
-        return function unMount() {}
+        return function unMount() {
+            clearTimeout(Timer)
+        }
 
         // [컴포넌트] - 괄호 내에 컴포넌트가 업데이트 될 때 실행하는 함수
     }, [])
 
+    let shoes = props.ShoesData
+
+
     let {id} = useParams(); //라우터 뒤에 있는 번호
 
-    let prdId = parseInt(id)
+    let findData = shoes.find((item)=>{
+      return item.id == id
+    });
 
-    let shoes = props.ShoesData
 
     let navi = useNavigate(); //navi 선언
 
@@ -51,12 +59,12 @@ function Detail(props) {
         navi('/')
     }
 
-    console.log(shoes[prdId].stock)
+    console.log(shoes)
 
   return (
       <div className='container colum'>
           {
-            shoes[prdId].stock < 4
+            findData.stock < 4
             ?   <Box className='Box'>
                     <Title color="white">마감임박</Title>
                 </Box>
@@ -65,13 +73,13 @@ function Detail(props) {
         <div className='badge-pop low'><Title>인기상품</Title></div>&nbsp;
         <div className='row'>
             <div className='col-md-6'>
-                <img src={shoes[prdId].src}/>
+                <img src={findData.src}/>
             </div>
             <div className='col-md-6 mt-4'>
-                <h4 className='pt-5'>{shoes[prdId].name}</h4>
+                <h4 className='pt-5'>{findData.title}</h4>
                 <p>상품 설명</p>
-                <p>재고 : {shoes[prdId].stock}</p>
-                <p>{shoes[prdId].price} 원</p>
+                <p>재고 : {findData.stock}</p>
+                <p>{findData.price} 원</p>
                 <button className='btn btn-primary'>주문하기</button>&nbsp;
                 <button className='btn btn-danger' onClick={goHome}>뒤로가기</button>
             </div>

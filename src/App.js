@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <Navigation/>
       <Routes>
-        <Route path="/" element={<Home ShoesData={ShoesData}/>}/>
+        <Route path="/" element={<Home ShoesData={ShoesData} setShoesData={setShoesData}/>}/>
         <Route path="/signUp" element={<SignUp/>}/>
         <Route path='/detail/:id' element={<Detail ShoesData={ShoesData}/>}/>
       </Routes>
