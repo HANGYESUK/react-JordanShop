@@ -110,6 +110,7 @@ function Home(ShoesData) {
             </div>
 
             <Button className='moreBtn' variant="primary" onClick={()=>{
+                    // npm으로 axios를 받아와 사용
                     axios.get('https://codingapple1.github.io/shop/data2.json')
                     .then((result)=>{
                         console.log("성공")                        

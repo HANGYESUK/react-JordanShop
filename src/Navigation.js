@@ -1,9 +1,10 @@
 import React from 'react'
 import { Navbar, Container, Nav, Button }  from 'react-bootstrap';
+import './Navigation.css'
 
 function Navigation() {
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar bg="dark" variant="dark" className='nav'>
         <Container>
           <Navbar.Brand href="/">JordanShop</Navbar.Brand>
           <Nav className="me-auto">
