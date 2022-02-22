@@ -7,6 +7,8 @@ import Home from './Home';
 import SignUp from './SignUp';
 import Detail from './Detail';
 import Navigation from './Navigation';
+import Cart from './Cart';
+
 
 function App() {
 
@@ -20,6 +22,7 @@ function App() {
         <Route path="/" element={<Home ShoesData={ShoesData} setShoesData={setShoesData}/>}/>
         <Route path="/signUp" element={<SignUp/>}/>
         <Route path='/detail/:id' element={<Detail ShoesData={ShoesData}/>}/>
+        <Route path='/cart' element={<Cart/>}/>
       </Routes>
     </div>
   );

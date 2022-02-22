@@ -4,7 +4,7 @@ import './Navigation.css'
 
 function Navigation() {
   return (
-    <Navbar bg="dark" variant="dark" className='nav'>
+    <Navbar bg="dark" variant="dark" className='navi'>
         <Container>
           <Navbar.Brand href="/">JordanShop</Navbar.Brand>
           <Nav className="me-auto">

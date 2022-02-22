@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import shoesData from './shoesData';
 import { useState, useEffect } from 'react';
 import Product from './Product';

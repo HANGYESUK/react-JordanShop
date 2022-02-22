@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom' //리액트 V6버전 부터 history 대신 navi로 제공
 import styled from 'styled-components'
 import './Detail.scss'
+import { Navbar, Container, Nav, Button }  from 'react-bootstrap';
 
 
 // 스타일 컴포넌트 - 대문자로 작명해야 됨
@@ -26,6 +27,8 @@ function Detail(props) {
 
     let [alert, setAlert] = useState(true);
 
+    //탭 state
+    let [tab, setTab] = useState(0);
 
     // Hook - 컴포넌트 라이프사이클에 후크를 건다
     useEffect(()=>{
@@ -62,30 +65,66 @@ function Detail(props) {
     console.log(shoes)
 
   return (
-      <div className='container colum'>
-          {
-            findData.stock < 4
-            ?   <Box className='Box'>
-                    <Title color="white">마감임박</Title>
-                </Box>
-            :null
-          }
-        <div className='badge-pop low'><Title>인기상품</Title></div>&nbsp;
-        <div className='row'>
-            <div className='col-md-6'>
-                <img src={findData.src}/>
-            </div>
-            <div className='col-md-6 mt-4'>
-                <h4 className='pt-5'>{findData.title}</h4>
-                <p>상품 설명</p>
-                <p>재고 : {findData.stock}</p>
-                <p>{findData.price} 원</p>
-                <button className='btn btn-primary'>주문하기</button>&nbsp;
-                <button className='btn btn-danger' onClick={goHome}>뒤로가기</button>
+      <div className='container'>
+        <div className='content-Box colum'>
+            {
+                findData.stock < 4
+                ?   <Box className='Box'>
+                        <Title color="white">마감임박</Title>
+                    </Box>
+                :null
+            }
+            <div className='badge-pop low'><Title>인기상품</Title></div>&nbsp;
+            <div className='row'>
+                <div className='col-md-6'>
+                    <img src={findData.src}/>
+                </div>
+                <div className='col-md-6 mt-4'>
+                    <h4>{findData.title}</h4>
+                    <p>상품 설명</p>
+                    <p>재고 : {findData.stock}</p>
+                    <p>{findData.price} 원</p>
+                    <button className='btn btn-primary'>주문하기</button>&nbsp;
+                    <button className='btn btn-danger' onClick={goHome}>뒤로가기</button>
+                </div>
             </div>
         </div>
+        <Nav className="tabMenu"  fill="fill" variant="tabs" defaultActiveKey="link-0">
+            <Nav.Item>
+                <Nav.Link eventKey="link-0" onClick={()=>{
+                    setTab(0)
+                }}>Active</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link eventKey="link-1" onClick={()=>{
+                    setTab(1)
+                }}>Loooonger NavLink</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link eventKey="link-2" onClick={()=>{
+                    setTab(2)
+                }}>Link</Nav.Link>
+            </Nav.Item>
+        </Nav>
+
+        <TabContent tab={tab}/>
       </div>
   )
+}
+
+
+
+function TabContent(props) {
+    if(props.tab === 0) {
+        return (<div>0번째 내용임</div>)
+    }
+    else if(props.tab === 1) {
+        return (<div>1번째 내용임</div>)
+    }
+    else if(props.tab === 2) {
+        return (<div>2번째 내용임</div>)
+    }
+    
 }
 
 export default Detail
