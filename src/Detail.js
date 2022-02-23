@@ -84,7 +84,9 @@ function Detail(props) {
                     <p>상품 설명</p>
                     <p>재고 : {findData.stock}</p>
                     <p>{findData.price} 원</p>
-                    <button className='btn btn-primary'>주문하기</button>&nbsp;
+                    <button className='btn btn-primary' onClick={()=>{
+                        window.location.href ="/cart"
+                    }}>주문하기</button>&nbsp;
                     <button className='btn btn-danger' onClick={goHome}>뒤로가기</button>
                 </div>
             </div>

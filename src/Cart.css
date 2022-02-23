@@ -1,3 +1,10 @@
 .cart {
     padding-top: 100px;
 }
+
+.calum {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
