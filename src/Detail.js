@@ -46,6 +46,7 @@ function Detail(props) {
         // [컴포넌트] - 괄호 내에 컴포넌트가 업데이트 될 때 실행하는 함수
     }, [])
 
+
     let shoes = props.ShoesData
 
 
@@ -59,11 +60,13 @@ function Detail(props) {
     let navi = useNavigate(); //navi 선언
 
     //함수 내에 navi에 이동할 경로를 파라미터로 넣음
-    function goHome() {
-        navi('/')
+    function goCart(a) {
+        navi("/cart")
     }
 
-    console.log(props.state)
+    function goHome(a) {
+        navi("/")
+    }
 
   return (
       <div className='container'>
@@ -86,12 +89,14 @@ function Detail(props) {
                     <p>재고 : {findData.stock}</p>
                     <p>{findData.price} 원</p>
                     <button className='btn btn-primary' onClick={()=>{
+                        {/* 장바구니에 상품 추가 */}
                         props.dispatch({type : "항목추가",
                                         payload : { id : findData.id,
                                                     title : findData.title,
                                                     price : findData.price,
                                                     stock : 1 }})
-                        window.location.href ="/cart"
+
+                        goCart()
                     }}>주문하기</button>&nbsp;
                     <button className='btn btn-danger' onClick={goHome}>뒤로가기</button>
                 </div>

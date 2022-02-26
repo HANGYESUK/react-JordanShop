@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { Table } from 'react-bootstrap'
+import React, { useState, useEffect } from 'react'
+import { Button, Table } from 'react-bootstrap'
 import styled from 'styled-components'
 
 // redux - import
@@ -22,7 +22,7 @@ let Box = styled.div`
 
 // redux- props로 사용
 function Cart(props) {
-
+    
   return (
     <div>
         <div className='cart calum'>
@@ -40,6 +40,7 @@ function Cart(props) {
                 <tbody>
                     {
                         props.state.map((item, a)=>{
+                            console.log(item.id)
                             return (
                                     <tr key={a}>
                                         <td>{ item.id }</td>
@@ -68,7 +69,8 @@ function Cart(props) {
                  </Box>
                 : null
             }
-              <button onClick={()=>{
+            <br></br>
+              <button className='btn btn-primary' onClick={()=>{
                   if(props.alertState == true) {
                     props.dispatch({type : "close"})
                   }

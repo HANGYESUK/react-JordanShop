@@ -27,20 +27,27 @@ function reducer2(state = alertBase, action) {
 }
 
 
-let baseState = [{
-  id : 0,
-  title : "조던 비싼 디올",
-  src : 'https://kream-phinf.pstatic.net/MjAyMDEwMjJfMTQ0/MDAxNjAzMzMzOTY5MTkz.eMa9T-j0gx_Uy25kkSe6lbfQp8M-edeBvvoBes5oGtQg.ESYf1qAW4ShCtF3q8jVh-TUUXidDUkKjmkucdIEydIIg.PNG/p_23597_0_db16c49862104d97a3985e7225f1b7da.png?type=l',
-  price : 100000000,
-  stock : 1
-}]
+let cartState = []
 
 
-function reducer(state = baseState, action) {
+function reducer(state = cartState, action) {
   if(action.type === '항목추가') {
     console.log(action.payload) 
-    let copy = [...state, ]
-
+    let copy = [...state]
+    if (copy.length == 0) {
+      copy.push(action.payload)
+    }
+    else {
+      for(let i=0; i<copy.length; i++) {
+        if(copy[i].id === action.payload.id) {
+          copy[i].stock += action.payload.stock
+        }
+        else {
+          copy.push(action.payload)
+          break;
+        }
+      }
+    }
     return copy
   }
 
