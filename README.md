@@ -22,7 +22,7 @@
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/></a>&nbsp 
   <img src="https://img.shields.io/badge/Javascript-ffb13b?style=flat-square&logo=javascript&logoColor=white"/></a>&nbsp 
   <img src="https://img.shields.io/badge/React.js-61DAFB?style=flat-square&logo=react&logoColor=white"/></a>&nbsp 
-  <img src="https://img.shields.io/badge/Axios-5B0BB5?style=flat-square&logo=axios&logoColor=white"/></a>&nbsp 
+  <img src="https://img.shields.io/badge/Axios-2C5BB4?style=flat-square&logo=axios&logoColor=white"/></a>&nbsp 
   <img src="https://img.shields.io/badge/Redux.js-764ABC?style=flat-square&logo=redux&logoColor=white"/></a>&nbsp 
 <br><br>
 <br>
