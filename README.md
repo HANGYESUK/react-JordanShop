@@ -1,7 +1,7 @@
 ![header](https://capsule-render.vercel.app/api?type=slice&color=gradient&height=200&section=header&text=Jordan%20Shop&fontAlign=50&fontAlignY=70&fontSize=90&fontColor=000000)
 
 
-# 사이트방문 https://hangyesuk.github.io/
+# 사이트방문 https://hangyesuk.github.io/JordanShop
 # 개인프로젝트 
 # 소개
 - 신발 종류중 조던을 판매하는 서비스  
