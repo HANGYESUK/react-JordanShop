@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom' //리액트 V6버전 �
 import styled from 'styled-components'
 import './Detail.scss'
 import { Navbar, Container, Nav, Button }  from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 
 // 스타일 컴포넌트 - 대문자로 작명해야 됨
@@ -62,7 +63,7 @@ function Detail(props) {
         navi('/')
     }
 
-    console.log(shoes)
+    console.log(props.state)
 
   return (
       <div className='container'>
@@ -85,6 +86,11 @@ function Detail(props) {
                     <p>재고 : {findData.stock}</p>
                     <p>{findData.price} 원</p>
                     <button className='btn btn-primary' onClick={()=>{
+                        props.dispatch({type : "항목추가",
+                                        payload : { id : findData.id,
+                                                    title : findData.title,
+                                                    price : findData.price,
+                                                    stock : 1 }})
                         window.location.href ="/cart"
                     }}>주문하기</button>&nbsp;
                     <button className='btn btn-danger' onClick={goHome}>뒤로가기</button>
@@ -129,4 +135,13 @@ function TabContent(props) {
     
 }
 
-export default Detail
+// redux - state를 props형태로 바꿔줌
+function Store(state){
+    return {
+        state : state.reducer,
+        alertState : state.reducer2
+    }
+}
+
+// redux - export 바꿔야됨
+export default connect(Store)(Detail)

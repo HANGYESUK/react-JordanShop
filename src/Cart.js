@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Table } from 'react-bootstrap'
 import styled from 'styled-components'
 
@@ -47,9 +47,13 @@ function Cart(props) {
                                         <td>{ item.stock }</td>
                                         <td>{ item.price * item.stock }</td>
                                         <td><button onClick={()=>{
-                                            props.dispatch({type : '감소'})
-                                        }}>-</button><button onClick={()=>{
-                                            props.dispatch({type : '증가'})
+                                            let setStock = item.stock
+                                            props.dispatch({type : '감소',
+                                                            payload : { stock : setStock }})
+                                        }}>-</button>
+                                        <button onClick={()=>{
+                                            let setStock = item.stock
+                                            props.dispatch({type : '증가', payload : {stock : setStock}})
                                         }}>+</button></td>
                                     </tr>
                             )
@@ -57,10 +61,22 @@ function Cart(props) {
                     }
                 </tbody>
             </Table>
-            <Box className='Box'>
-                <h2>지금 구매하시면 신규할인 20%</h2>
-                <button>닫기</button>
-            </Box>
+            {
+                props.alertState == true
+                ? <Box className='Box'>
+                    <h2>지금 구매하시면 신규할인 20%</h2>
+                 </Box>
+                : null
+            }
+              <button onClick={()=>{
+                  if(props.alertState == true) {
+                    props.dispatch({type : "close"})
+                  }
+                  else if(props.alertState == false) {
+                    props.dispatch({type : "open"})
+
+                  }
+              }}>닫기</button>
         </div>
     </div>
   )
@@ -69,7 +85,8 @@ function Cart(props) {
 // redux - state를 props형태로 바꿔줌
 function Store(state){
     return {
-        state : state
+        state : state.reducer,
+        alertState : state.reducer2
     }
 }
 
