@@ -23,7 +23,7 @@
   <img src="https://img.shields.io/badge/Javascript-ffb13b?style=flat-square&logo=javascript&logoColor=white"/></a>&nbsp 
   <img src="https://img.shields.io/badge/React.js-61DAFB?style=flat-square&logo=react&logoColor=white"/></a>&nbsp 
   <img src="https://img.shields.io/badge/Axios-5B0BB5?style=flat-square&logo=axios&logoColor=white"/></a>&nbsp 
-  <img src="https://img.shields.io/badge/Redux.js-61DAFB?style=flat-square&logo=redux&logoColor=white"/></a>&nbsp 
+  <img src="https://img.shields.io/badge/Redux.js-764ABC?style=flat-square&logo=redux&logoColor=white"/></a>&nbsp 
 <br><br>
 <br>
 
