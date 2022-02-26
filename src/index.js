@@ -12,6 +12,7 @@ import { createStore, combineReducers } from 'redux';
 
 let alertBase = true;
 
+//장바구니 알림창 닫고 열기
 function reducer2(state = alertBase, action) {
   
   if(action.type === "close"){
@@ -26,7 +27,7 @@ function reducer2(state = alertBase, action) {
   return state
 }
 
-
+//장바구니 state
 let cartState = []
 
 
@@ -51,9 +52,35 @@ function reducer(state = cartState, action) {
     return copy
   }
 
+  else if (action.type === '증가') {
+    console.log(action.payload.id)
+    let copy = [...state]
+    for(let i=0; i<copy.length; i++) {
+      if(copy[i].id === action.payload.id) {
+        copy[i].stock++;
+      }
+      else {
+        break;
+      }
+    }
+  
+    
+
+    return copy
+
+  }
+
   else if (action.type === '감소') {
 
     let copy = [...state]
+    for(let i=0; i<copy.length; i++) {
+      if(copy[i].id === action.payload.id) {
+        copy[i].stock--;
+      }
+      else {
+        break;
+      }
+    }
 
     return copy
 

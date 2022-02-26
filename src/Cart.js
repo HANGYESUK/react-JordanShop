@@ -22,7 +22,7 @@ let Box = styled.div`
 
 // redux- props로 사용
 function Cart(props) {
-    
+
   return (
     <div>
         <div className='cart calum'>
@@ -48,13 +48,12 @@ function Cart(props) {
                                         <td>{ item.stock }</td>
                                         <td>{ item.price * item.stock }</td>
                                         <td><button onClick={()=>{
-                                            let setStock = item.stock
-                                            props.dispatch({type : '감소',
-                                                            payload : { stock : setStock }})
+                                            let id = item.id
+                                            props.dispatch({type : '감소', payload : { id : id }})
                                         }}>-</button>
                                         <button onClick={()=>{
-                                            let setStock = item.stock
-                                            props.dispatch({type : '증가', payload : {stock : setStock}})
+                                            let id = item.id
+                                            props.dispatch({type : '증가', payload : { id : id }})
                                         }}>+</button></td>
                                     </tr>
                             )
