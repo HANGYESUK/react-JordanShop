@@ -52,7 +52,7 @@ function reducer(state = cartState, action) {
   }
 
   else if (action.type === '감소') {
-    console.log(action.payload) 
+
     let copy = [...state]
 
     return copy
