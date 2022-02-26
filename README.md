@@ -1,3 +1,31 @@
+![header](https://capsule-render.vercel.app/api?type=slice&color=gradient&height=200&section=header&text=Jordan%20Shop&fontAlign=50&fontAlignY=70&fontSize=90&fontColor=000000)
+
+
+# 사이트방문 https://hangyesuk.github.io/
+# 개인프로젝트 - API사용
+# 소개
+- TMDB의 API를 사용해 인기 영화 데이터를 가져와 제작하였습니다.
+- FE기여도 : 100%
+# 기능
+- 전체 스크롤이 내려가면 header의 배경이 검은색으로 변경
+- 영화 스크롤바 디자인
+- 포스터 호버시 css를 이용한 간단한 애니메이션
+- 포스터 클릭시 state를 넘겨받아 모달창에서 클릭한 포스터의 제목과 상세정보 제공
+- 모달창에서 예고편 클릭시 클릭한 포스터의 콘텐츠 제목으로 검색된 유튜브 페이지로 이동 
+
+
+
+<br><br>
+<h2 align="center">✔ Tech Stack ✔</h2>
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/></a>&nbsp 
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/></a>&nbsp 
+  <img src="https://img.shields.io/badge/Javascript-ffb13b?style=flat-square&logo=javascript&logoColor=white"/></a>&nbsp 
+  <img src="https://img.shields.io/badge/React.js-61DAFB?style=flat-square&logo=react&logoColor=white"/></a>&nbsp 
+<br><br>
+<br>
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
