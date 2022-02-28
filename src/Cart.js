@@ -3,7 +3,7 @@ import { Button, Table } from 'react-bootstrap'
 import styled from 'styled-components'
 
 // redux - import
-import { connect } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import './Cart.css'
 
 
@@ -20,8 +20,16 @@ let Box = styled.div`
 `;
 
 
-// redux- props로 사용
+// redux- props로 사용 - Hook써도 무조건 있어야 됨
 function Cart(props) {
+
+    //useSelector Hook사용 - 밑에서 function선언 안해도 됨
+    let state = useSelector((state) => state)
+
+    console.log(state.reducer)
+
+    //dispatch Hook사용
+    let dispatch = useDispatch()
 
   return (
     <div>
@@ -39,7 +47,7 @@ function Cart(props) {
                 </thead>
                 <tbody>
                     {
-                        props.state.map((item, a)=>{
+                        state.reducer.map((item, a)=>{
                             console.log(item.id)
                             return (
                                     <tr key={a}>
@@ -49,11 +57,11 @@ function Cart(props) {
                                         <td>{ item.price * item.stock }</td>
                                         <td><button onClick={()=>{
                                             let id = item.id
-                                            props.dispatch({type : '감소', payload : { id : id }})
+                                            dispatch({type : '감소', payload : { id : id }})
                                         }}>-</button>
                                         <button onClick={()=>{
                                             let id = item.id
-                                            props.dispatch({type : '증가', payload : { id : id }})
+                                            dispatch({type : '증가', payload : { id : id }})
                                         }}>+</button></td>
                                     </tr>
                             )
@@ -84,15 +92,15 @@ function Cart(props) {
 }
 
 // redux - state를 props형태로 바꿔줌
-function Store(state){
-    return {
-        state : state.reducer,
-        alertState : state.reducer2
-    }
-}
+// function Store(state){
+//     return {
+//         state : state.reducer,
+//         alertState : state.reducer2
+//     }
+// }
 
 // redux - export 바꿔야됨
-export default connect(Store)(Cart)
+// export default connect(Store)(Cart)
 
 
-// export default Cart
+export default Cart;

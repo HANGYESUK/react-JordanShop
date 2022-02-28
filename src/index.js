@@ -32,39 +32,46 @@ let cartState = []
 
 
 function reducer(state = cartState, action) {
+
   if(action.type === '항목추가') {
-    console.log(action.payload) 
+    console.log(action.payload.id) 
     let copy = [...state]
     if (copy.length == 0) {
       copy.push(action.payload)
     }
     else {
-      for(let i=0; i<copy.length; i++) {
-        if(copy[i].id === action.payload.id) {
-          copy[i].stock += action.payload.stock
-        }
-        else {
-          copy.push(action.payload)
-          break;
-        }
+
+      let found = copy.findIndex((a)=>{ return a.id === action.payload.id })
+
+      if(found >= 0) {
+        copy[found].stock++
+        return copy;
       }
+      else {
+        copy.push(action.payload)
+        return copy
+      }
+
     }
     return copy
   }
 
+
   else if (action.type === '증가') {
     console.log(action.payload.id)
     let copy = [...state]
+
     for(let i=0; i<copy.length; i++) {
-      if(copy[i].id === action.payload.id) {
-        copy[i].stock++;
+
+      if(copy[i].id != action.payload.id) {
+        continue;
       }
-      else {
+      else if(copy[i].id == action.payload.id){
+        copy[i].stock++
         break;
       }
     }
-  
-    
+     
 
     return copy
 
@@ -74,10 +81,12 @@ function reducer(state = cartState, action) {
 
     let copy = [...state]
     for(let i=0; i<copy.length; i++) {
-      if(copy[i].id === action.payload.id) {
-        copy[i].stock--;
+
+      if(copy[i].id != action.payload.id) {
+        continue;
       }
-      else {
+      else if(copy[i].id == action.payload.id){
+        copy[i].stock--;
         break;
       }
     }

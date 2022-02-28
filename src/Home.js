@@ -98,15 +98,15 @@ function Home(ShoesData) {
 
         <div className='container'>
             <div className='row'>
-            {
-                shoesData.map((item, a)=>{
-                    console.log(item)
-                    return (
-                        // a라는 key를 파라미터로 보냄
-                        <Product key={a} props={item} id={item.id}/>
-                    )
-                })
-            }
+                {
+                    shoesData.map((item, a)=>{
+                        console.log(item)
+                        return (
+                            // a라는 key를 파라미터로 보냄
+                            <Product key={a} props={item} id={item.id}/>
+                        )
+                    })
+                }
             </div>
 
             <Button className='moreBtn' variant="primary" onClick={()=>{
