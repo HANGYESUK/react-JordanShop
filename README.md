@@ -1,3 +1,33 @@
+![header](https://capsule-render.vercel.app/api?type=slice&color=gradient&height=200&section=header&text=Jordan%20Shop&fontAlign=50&fontAlignY=70&fontSize=90&fontColor=000000)
+
+
+# 사이트방문 https://hangyesuk.github.io/JordanShop
+# 개인프로젝트 
+# 소개
+- 신발 종류중 조던을 판매하는 서비스  
+- FE기여도 : 100%
+
+# 기능
+- Json데이터를 받았다고 가정해 상품state를 구성  
+- Redux를 이용한 장바구니, 알림창 상태관리
+- 인기상품과 가격별 정렬기능
+- axios를 이용한 상품 더보기 기능
+
+
+
+<br><br>
+<h2 align="center">✔ Tech Stack ✔</h2>
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/></a>&nbsp 
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/></a>&nbsp 
+  <img src="https://img.shields.io/badge/Javascript-ffb13b?style=flat-square&logo=javascript&logoColor=white"/></a>&nbsp 
+  <img src="https://img.shields.io/badge/React.js-61DAFB?style=flat-square&logo=react&logoColor=white"/></a>&nbsp 
+  <img src="https://img.shields.io/badge/Axios-2C5BB4?style=flat-square&logo=axios&logoColor=white"/></a>&nbsp 
+  <img src="https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=redux&logoColor=white"/></a>&nbsp 
+<br><br>
+<br>
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
