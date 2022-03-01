@@ -20,7 +20,7 @@ function Home(ShoesData) {
 
   return (
       <>
-        <div className='jumboTron'>
+        <div className='jumboTron colum'>
             <div className='jumboTronBack colum'>
                 <h1>20% Season of!</h1>
                 <h4>조던 드가즈아~</h4>

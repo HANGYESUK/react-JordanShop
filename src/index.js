@@ -27,6 +27,8 @@ function reducer2(state = alertBase, action) {
   return state
 }
 
+
+
 //장바구니 state
 let cartState = []
 
@@ -34,7 +36,7 @@ let cartState = []
 function reducer(state = cartState, action) {
 
   if(action.type === '항목추가') {
-    console.log(action.payload.id) 
+
     let copy = [...state]
     if (copy.length == 0) {
       copy.push(action.payload)
@@ -57,7 +59,7 @@ function reducer(state = cartState, action) {
   }
 
 
-  else if (action.type === '증가') {
+  else if (action.type === 'plus') {
     console.log(action.payload.id)
     let copy = [...state]
 
@@ -77,7 +79,7 @@ function reducer(state = cartState, action) {
 
   }
 
-  else if (action.type === '감소') {
+  else if (action.type === 'minus') {
 
     let copy = [...state]
     for(let i=0; i<copy.length; i++) {
@@ -85,7 +87,12 @@ function reducer(state = cartState, action) {
       if(copy[i].id != action.payload.id) {
         continue;
       }
+
       else if(copy[i].id == action.payload.id){
+        if(copy[i].stock <= 1) {
+          alert("이미 최소 수량 입니다.")
+          break;
+        }
         copy[i].stock--;
         break;
       }
@@ -93,6 +100,22 @@ function reducer(state = cartState, action) {
 
     return copy
 
+  }
+
+  else if (action.type == 'delete') {
+    console.log(action.payload.id)
+    let copy = [...state]
+
+    for(let i=0; i<copy.length; i++) {
+      if(copy[i].id == action.payload.id) {
+        copy.splice(i, 1)
+      }
+      else {
+        continue;
+      }
+    }
+
+    return copy
   }
 
   else {

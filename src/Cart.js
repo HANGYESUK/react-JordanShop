@@ -26,10 +26,21 @@ function Cart(props) {
     //useSelector Hook사용 - 밑에서 function선언 안해도 됨
     let state = useSelector((state) => state)
 
-    console.log(state.reducer)
-
     //dispatch Hook사용
     let dispatch = useDispatch()
+
+    let [total, setTotal] = useState(0)
+
+    let totalCopy = 0;
+
+    useEffect(()=>{
+
+        setTotal(totalCopy)
+
+    }, [state.reducer])
+
+    console.log(total)
+
 
   return (
     <div>
@@ -43,12 +54,15 @@ function Cart(props) {
                         <th>수량</th>
                         <th>가격</th>
                         <th>변경</th>
+                        <th>삭제</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         state.reducer.map((item, a)=>{
-                            console.log(item.id)
+
+                            totalCopy += (item.price * item.stock)
+                        
                             return (
                                     <tr key={a}>
                                         <td>{ item.id }</td>
@@ -57,32 +71,45 @@ function Cart(props) {
                                         <td>{ item.price * item.stock }</td>
                                         <td><button onClick={()=>{
                                             let id = item.id
-                                            dispatch({type : '감소', payload : { id : id }})
+                                            dispatch({type : 'minus', payload : { id : id }})
                                         }}>-</button>
                                         <button onClick={()=>{
                                             let id = item.id
-                                            dispatch({type : '증가', payload : { id : id }})
+                                            dispatch({type : 'plus', payload : { id : id }})
                                         }}>+</button></td>
+                                        <td><button onClick={()=>{
+                                            let id = item.id
+                                            dispatch({type : 'delete', payload : { id : id }})
+                                        }}>X</button></td>
                                     </tr>
                             )
                         })
                     }
+                    <tr>
+                        <td>총 금액</td>
+                        <td>{total}</td>
+                    </tr>
                 </tbody>
             </Table>
+
+            
+            <button className='btn btn-primary'>주문하기</button>
+                
+
             {
-                props.alertState == true
+                state.reducer2 == true
                 ? <Box className='Box'>
                     <h2>지금 구매하시면 신규할인 20%</h2>
                  </Box>
                 : null
             }
             <br></br>
-              <button className='btn btn-primary' onClick={()=>{
-                  if(props.alertState == true) {
-                    props.dispatch({type : "close"})
+              <button className='btn btn-success' onClick={()=>{
+                  if(state.reducer2 == true) {
+                    dispatch({type : "close"})
                   }
-                  else if(props.alertState == false) {
-                    props.dispatch({type : "open"})
+                  else if(state.reducer2 == false) {
+                    dispatch({type : "open"})
 
                   }
               }}>닫기</button>
