@@ -32,9 +32,10 @@ function reducer2(state = alertBase, action) {
 //장바구니 state
 let cartState = []
 
-
+// 장바구니 reducer
 function reducer(state = cartState, action) {
 
+  
   if(action.type === '항목추가') {
 
     let copy = [...state]

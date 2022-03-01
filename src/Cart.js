@@ -19,6 +19,18 @@ let Box = styled.div`
     max-width: 500px;
 `;
 
+let btnBox = {
+    minWidth: "70px",
+    textAlign: "center"
+}
+
+let btn = {
+    border: "none",
+    borderRadius: "2px",
+    backgroundColor: "white",
+    margin: "3px"
+}
+
 
 // redux- props로 사용 - Hook써도 무조건 있어야 됨
 function Cart(props) {
@@ -49,11 +61,11 @@ function Cart(props) {
             <Table striped="striped" bordered="bordered" hover="hover" variant="dark">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>상품번호</th>
                         <th>상품명</th>
                         <th>수량</th>
                         <th>가격</th>
-                        <th>변경</th>
+                        <th style={btnBox}>변경</th>
                         <th>삭제</th>
                     </tr>
                 </thead>
@@ -68,16 +80,16 @@ function Cart(props) {
                                         <td>{ item.id }</td>
                                         <td>{ item.title }</td>
                                         <td>{ item.stock }</td>
-                                        <td>{ item.price * item.stock }</td>
-                                        <td><button onClick={()=>{
+                                        <td>{ item.price * item.stock } 원</td>
+                                        <td><button style={btn} onClick={()=>{
                                             let id = item.id
                                             dispatch({type : 'minus', payload : { id : id }})
                                         }}>-</button>
-                                        <button onClick={()=>{
+                                        <button style={btn} onClick={()=>{
                                             let id = item.id
                                             dispatch({type : 'plus', payload : { id : id }})
                                         }}>+</button></td>
-                                        <td><button onClick={()=>{
+                                        <td><button style={btn} onClick={()=>{
                                             let id = item.id
                                             dispatch({type : 'delete', payload : { id : id }})
                                         }}>X</button></td>
@@ -87,7 +99,11 @@ function Cart(props) {
                     }
                     <tr>
                         <td>총 금액</td>
-                        <td>{total}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{total} 원</td>
                     </tr>
                 </tbody>
             </Table>
