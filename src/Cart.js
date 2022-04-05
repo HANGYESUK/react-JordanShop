@@ -83,15 +83,15 @@ function Cart(props) {
                                         <td>{ item.price * item.stock } 원</td>
                                         <td><button style={btn} onClick={()=>{
                                             let id = item.id
-                                            dispatch({type : 'minus', payload : { id : id }})
+                                            dispatch({type : 'minus', payload : { id: id }})
                                         }}>-</button>
                                         <button style={btn} onClick={()=>{
                                             let id = item.id
-                                            dispatch({type : 'plus', payload : { id : id }})
+                                            dispatch({type : 'plus', payload : { id: id,  stock: item.stock }})
                                         }}>+</button></td>
                                         <td><button style={btn} onClick={()=>{
                                             let id = item.id
-                                            dispatch({type : 'delete', payload : { id : id }})
+                                            dispatch({type : 'delete', payload : { id: id }})
                                         }}>X</button></td>
                                     </tr>
                             )

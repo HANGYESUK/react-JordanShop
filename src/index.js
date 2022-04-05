@@ -28,6 +28,9 @@ function reducer2(state = alertBase, action) {
 }
 
 
+let shoes = shoesData;
+console.log(shoes)
+
 
 //장바구니 state
 let cartState = []
@@ -64,14 +67,24 @@ function reducer(state = cartState, action) {
     console.log(action.payload.id)
     let copy = [...state]
 
+    //카트에서 아이디 검색
     for(let i=0; i<copy.length; i++) {
 
       if(copy[i].id != action.payload.id) {
         continue;
       }
       else if(copy[i].id == action.payload.id){
-        copy[i].stock++
-        break;
+        let result = shoes.filter(item => item.id === copy[i].id) 
+        console.log(result[0].stock)
+        if(copy[i].stock >= result[0].stock) {
+          alert("재고보다 많은 수량은 선택하실 수 없습니다!");
+          break;
+        }
+        else {
+          copy[i].stock++
+          break;
+        }
+
       }
     }
      
