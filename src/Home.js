@@ -8,13 +8,15 @@ import axios from 'axios';
 
 function Home(ShoesData) {
 
-    let shoesData = ShoesData.ShoesData
+    let ShoesDataCopy = ShoesData.ShoesData;
 
-    let setShoesData = ShoesData.setShoesData
+    const [shoesData, setShoesData] = useState(ShoesDataCopy);
 
-    console.log(shoesData)
+    console.log(shoesData);
 
-    let [show, setShow] = useState(true)
+    let [show, setShow] = useState(true);
+
+    let [sale, setSale] = useState(false);
 
     useEffect(()=>{})
 
@@ -24,75 +26,101 @@ function Home(ShoesData) {
             <div className='jumboTronBack colum'>
                 <h1>20% Season of!</h1>
                 <h4>조던 드가즈아~</h4>
-                <Button variant="primary">Primary</Button>
+                <Button variant="primary" onClick={()=>{
+                    if(sale == false) {
+                        setSale(true)
+                        let shoesCopy = [...shoesData]
+                        let result = shoesCopy.filter(item=>item.discount == true)
+                        console.log(result)
+                        setShoesData(result)
+                    }
+                    else {
+                        setSale(false)
+                        let shoesCopy = [...ShoesDataCopy]
+                        setShoesData(shoesCopy)
+                    }
+                }}>{ sale == false
+                     ? "세일 상품 보기"
+                     : "전체 상품 보기" 
+                    }</Button>
             </div>
         </div>
 
         <br/>
 
 
-        <Button variant="danger" onClick={()=>{
-                    let shoesCopy = [...shoesData]
-                    shoesCopy.sort(function (a,b) {
-                        return a.stock - b.stock
+            <Button variant="danger" onClick={()=>{
+                        let shoesCopy = [...shoesData]
+                        shoesCopy.sort(function (a,b) {
+                            return a.stock - b.stock
+                        })
+                        console.log(shoesCopy)
+                        setShoesData(shoesCopy)
+                    }}>인기순 정렬
+            </Button>&nbsp;&nbsp;&nbsp;
+
+
+
+            <Button variant="warning" onClick={()=>{
+                        let shoesCopy = [...shoesData]
+                        shoesCopy.sort(function (a,b) {
+                            return b.price - a.price 
+                        })
+                        console.log(shoesCopy)
+                        setShoesData(shoesCopy)
+                    }}>가격 높은순 정렬
+            </Button>&nbsp;&nbsp;&nbsp;
+
+            <Button variant="success" onClick={()=>{
+                        let shoesCopy = [...shoesData]
+                        shoesCopy.sort(function (a,b) {
+                            return a.price - b.price
+                        })
+                        console.log(shoesCopy)
+                        setShoesData(shoesCopy)
+                    }}>가격 낮은순 정렬
+            </Button>&nbsp;&nbsp;&nbsp;
+
+
+
+            <Button variant="primary" onClick={()=>{
+
+                    let request_body = {
+                        "startDate": "2017-08-01",
+                        "endDate": "2017-09-30",
+                        "timeUnit": "month",
+                        "category": [
+                            {"name": "패션의류", "param": ["50000000"]},
+                            {"name": "화장품/미용", "param": ["50000002"]}
+                        ],
+                        "device": "pc",
+                        "ages": ["20", "30"],
+                        "gender": "m"
+                    };
+
+
+                    const ID_KEY = '2ibhN9SxL5RkEJL2VVBp';
+                    const SECRET_KEY = 'DkmSRj7nOm';
+                    let api_url = 'https://openapi.naver.com/v1/datalab/shopping/categories';
+
+
+                    axios.post({
+                        url:api_url,
+                        body : JSON.stringify(request_body),
+                        headers : {
+                            'X-Naver-Client-Id':ID_KEY,
+                            'X-Naver-Client-Secret': SECRET_KEY,
+                            'Content-Type': 'application/json'
+                        }
                     })
-                    console.log(shoesCopy)
-                    setShoesData(shoesCopy)
-                }}>인기순 정렬
-        </Button>&nbsp;&nbsp;&nbsp;
-
-
-
-
-        <Button variant="success" onClick={()=>{
-                    let shoesCopy = [...shoesData]
-                    shoesCopy.sort(function (a,b) {
-                        return a.price - b.price
+                    .then((err, response, body)=>{
+                        console.log(response.statusCode)
+                        console.log(body)
                     })
-                    console.log(shoesCopy)
-                    setShoesData(shoesCopy)
-                }}>가격순 정렬
-        </Button>&nbsp;&nbsp;&nbsp;
+                    .catch((err)=>{console.log(err)})
 
-
-        <Button variant="primary" onClick={()=>{
-
-                let request_body = {
-                    "startDate": "2017-08-01",
-                    "endDate": "2017-09-30",
-                    "timeUnit": "month",
-                    "category": [
-                        {"name": "패션의류", "param": ["50000000"]},
-                        {"name": "화장품/미용", "param": ["50000002"]}
-                    ],
-                    "device": "pc",
-                    "ages": ["20", "30"],
-                    "gender": "m"
-                };
-
-
-                const ID_KEY = '2ibhN9SxL5RkEJL2VVBp';
-                const SECRET_KEY = 'DkmSRj7nOm';
-                let api_url = 'https://openapi.naver.com/v1/datalab/shopping/categories';
-
-
-                axios.post({
-                    url:api_url,
-                    body : JSON.stringify(request_body),
-                    headers : {
-                        'X-Naver-Client-Id':ID_KEY,
-                        'X-Naver-Client-Secret': SECRET_KEY,
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then((err, response, body)=>{
-                    console.log(response.statusCode)
-                    console.log(body)
-                })
-                .catch((err)=>{console.log(err)})
-
-                }}>데이터추가
-        </Button>
+                    }}>데이터추가
+            </Button>
 
 
 
