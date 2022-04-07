@@ -6,7 +6,7 @@ function Navigation() {
   return (
     <Navbar bg="dark" variant="dark" className='navi'>
         <Container>
-          <Navbar.Brand href="/">JordanShop</Navbar.Brand>
+          <Navbar.Brand href="/JordanShop">JordanShop</Navbar.Brand>
           <Nav className="me-auto">
           <Nav.Link href="/cart">Cart</Nav.Link>
           </Nav>

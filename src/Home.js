@@ -26,20 +26,7 @@ function Home(ShoesData) {
             <div className='jumboTronBack colum'>
                 <h1>20% Season of!</h1>
                 <h4>조던 드가즈아~</h4>
-                <Button variant="primary" onClick={()=>{
-                    if(sale == false) {
-                        setSale(true)
-                        let shoesCopy = [...shoesData]
-                        let result = shoesCopy.filter(item=>item.discount == true)
-                        console.log(result)
-                        setShoesData(result)
-                    }
-                    else {
-                        setSale(false)
-                        let shoesCopy = [...ShoesDataCopy]
-                        setShoesData(shoesCopy)
-                    }
-                }}>{ sale == false
+                <Button variant="primary">{ sale == false
                      ? "세일 상품 보기"
                      : "전체 상품 보기" 
                     }</Button>
